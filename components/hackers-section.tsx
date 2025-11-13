@@ -1,25 +1,28 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Zap, Lock, Eye, Bug } from "lucide-react"
+import { motion } from "framer-motion";
+import { Zap, Lock, Eye, Bug } from "lucide-react";
 
 export default function HackersSection() {
   const attacks = [
     {
       title: "Malware & Ransomware",
-      description: "Software malicioso que infecta seu computador e pode criptografar seus arquivos",
+      description:
+        "Software malicioso que infecta seu computador e pode criptografar seus arquivos",
       icon: <Bug className="w-8 h-8" />,
       color: "from-red-400 to-pink-500",
     },
     {
       title: "SQL Injection",
-      description: "Exploração de bancos de dados através de entradas não validadas",
+      description:
+        "Exploração de bancos de dados através de entradas não validadas",
       icon: <Zap className="w-8 h-8" />,
       color: "from-orange-400 to-red-500",
     },
     {
       title: "Força Bruta",
-      description: "Tentativa de adivinhar senhas testando múltiplas combinações",
+      description:
+        "Tentativa de adivinhar senhas testando múltiplas combinações",
       icon: <Lock className="w-8 h-8" />,
       color: "from-yellow-400 to-orange-500",
     },
@@ -29,7 +32,7 @@ export default function HackersSection() {
       icon: <Eye className="w-8 h-8" />,
       color: "from-green-400 to-cyan-500",
     },
-  ]
+  ];
 
   return (
     <section className="relative py-20 px-4 bg-gradient-to-b from-black via-red-950/10 to-black">
@@ -41,7 +44,9 @@ export default function HackersSection() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Tipos de Ataques Hackers</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Tipos de Ataques Hackers
+          </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-red-400 to-pink-500 rounded-full mx-auto" />
         </motion.div>
 
@@ -63,8 +68,10 @@ export default function HackersSection() {
               >
                 {attack.icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{attack.title}</h3>
-              <p className="text-gray-400">{attack.description}</p>
+              <h3 className="text-xl font-bold text-white mb-3">
+                {attack.title}
+              </h3>
+              <p className="text-sm text-white">{attack.description}</p>
             </motion.div>
           ))}
         </div>
@@ -76,7 +83,9 @@ export default function HackersSection() {
           viewport={{ once: true }}
           className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 border border-cyan-500/30 rounded-lg p-12"
         >
-          <h3 className="text-2xl font-bold text-white mb-6">🛡️ Dicas de Proteção</h3>
+          <h3 className="text-2xl font-bold text-white mb-6">
+            🛡️ Dicas de Proteção
+          </h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h4 className="text-cyan-400 font-bold mb-3">Comportamento</h4>
@@ -100,5 +109,5 @@ export default function HackersSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

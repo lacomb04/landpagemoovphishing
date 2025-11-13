@@ -1,0 +1,67 @@
+.glitchContainer {
+  position: relative;
+}
+
+.glitch {
+  /* Animação mais sutil e lenta (0.5s em vez de 0.3s) */
+  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.glitchEffect {
+  /* Reduzida opacidade do gradiente de 0.1 para 0.05 para ser menos visível */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 200, 0.05) 25%,
+    transparent 50%,
+    rgba(0, 150, 255, 0.05) 75%,
+    transparent 100%
+  );
+  animation: glitchShift 0.5s ease-in-out;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    /* Reduzido deslocamento de -2px para -1px para movimento mais suave */
+    transform: translate(-1px, -1px);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(1px, 1px);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-1px, 1px);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(1px, -1px);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    clip-path: inset(58% 0 43% 0);
+    transform: translate(1px, 1px);
+  }
+}
+
+@keyframes glitchShift {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    clip-path: inset(0 90% 0 0);
+  }
+  40% {
+    clip-path: inset(50% 0 50% 0);
+  }
+  60% {
+    clip-path: inset(0 0 0 90%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}

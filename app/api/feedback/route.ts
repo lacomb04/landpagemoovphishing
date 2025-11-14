@@ -1,38 +1,57 @@
-import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const { name, email, rating, feedback, timestamp } = await req.json();
+    const cookieStore = await cookies();
 
-    const supabase = createClient(
+    const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY! // chave secreta DO SERVIDOR
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll();
+          },
+          setAll(cookiesToSet) {
+            try {
+              cookiesToSet.forEach(({ name, value, options }) =>
+                cookieStore.set(name, value, options)
+              );
+            } catch {
+              // Handle error
+            }
+          },
+        },
+      }
     );
 
-    const { error, data } = await supabase.from("feedback").insert([
-      {
-        name,
-        email,
-        rating,
-        feedback,
-        created_at: timestamp,
-      },
-    ]);
+    const body = await request.json();
+
+    const { data, error } = await supabase
+      .from("feedback")
+      .insert([
+        {
+          name: body.name,
+          email: body.email,
+          rating: body.rating,
+          feedback: body.feedback,
+          created_at: body.timestamp,
+        },
+      ])
+      .select();
 
     if (error) {
-      console.error("Erro Supabase:", error);
-      return NextResponse.json(
-        { error: "Erro ao salvar no banco" },
-        { status: 500 }
-      );
+      console.error("[v0] Erro Supabase:", error);
+      return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
     return NextResponse.json({ success: true, data }, { status: 201 });
-  } catch (err) {
-    console.error("Erro API:", err);
+  } catch (error) {
+    console.error("[v0] Erro ao processar feedback:", error);
     return NextResponse.json(
-      { error: "Erro interno no servidor" },
+      { error: "Erro ao processar feedback" },
       { status: 500 }
     );
   }

@@ -64,24 +64,21 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="mb-8 rounded-2xl border border-indigo-500/40 bg-indigo-900/20 p-6"
           >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-24 w-24 rounded-full overflow-hidden border border-white/20">
+            <div className="mb-6">
+              <div className="w-full max-w-2xl h-48 md:h-56 rounded-xl overflow-hidden border border-white/20 mx-auto">
                 <Image
                   src={encodeURI("/images/foto integrantes.png")}
                   alt="Foto dos integrantes"
-                  width={96}
-                  height={96}
-                  className="h-full w-full object-cover"
+                  width={960}
+                  height={640}
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
-              <p className="text-white text-lg font-semibold">
+              <p className="text-white text-lg font-semibold text-center mt-3">
                 Equipe: {teamMembers.join(" • ")}
               </p>
             </div>
-            <p className="text-sm md:text-base text-gray-300 mb-4">
-              Foto oficial dos três integrantes.
-            </p>
-            
+
             <div className="flex flex-wrap gap-3">
               {teamMembers.map((member) => (
                 <span
@@ -154,7 +151,7 @@ export default function AboutSection() {
                 </p>
               </div>
               <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs uppercase tracking-wide">
-                2024
+                2025
               </span>
             </div>
           </div>

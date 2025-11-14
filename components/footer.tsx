@@ -27,6 +27,9 @@ export default function Footer() {
               informações sobre proteção digital.
             </p>
           </div>
+          <div>
+            <FeedbackForm />
+          </div>
         </motion.div>
 
         <div className="border-t border-cyan-500/20 pt-8">

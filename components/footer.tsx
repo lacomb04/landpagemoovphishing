@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import FeedbackForm from "./feedback-form"
+import { motion } from "framer-motion";
+import FeedbackForm from "./feedback-form";
 
 export default function Footer() {
   return (
@@ -16,28 +16,9 @@ export default function Footer() {
         >
           <div>
             <h3 className="text-white font-bold mb-4">Projeto Educacional</h3>
-            <p className="text-gray-400 text-sm">Desenvolvido para conscientizar sobre phishing e engenharia social</p>
-          </div>
-
-          <div>
-            <h3 className="text-white font-bold mb-4">Recursos</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-cyan-400 transition">
-                  Denunciar Phishing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-cyan-400 transition">
-                  Reportar Segurança
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-cyan-400 transition">
-                  Mais Informações
-                </a>
-              </li>
-            </ul>
+            <p className="text-gray-400 text-sm">
+              Desenvolvido para conscientizar sobre phishing e engenharia social
+            </p>
           </div>
 
           <div>
@@ -46,10 +27,14 @@ export default function Footer() {
         </motion.div>
 
         <div className="border-t border-cyan-500/20 pt-8">
-          <p className="text-center text-gray-500 text-sm">© 2025 Projeto de Conscientização em Segurança Digital</p>
-          <p className="text-center text-gray-600 text-xs mt-2">Este projeto é apenas para fins educacionais</p>
+          <p className="text-center text-gray-500 text-sm">
+            © 2025 Projeto de Conscientização em Segurança Digital
+          </p>
+          <p className="text-center text-gray-600 text-xs mt-2">
+            Este projeto é apenas para fins educacionais
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

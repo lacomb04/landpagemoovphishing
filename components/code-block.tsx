@@ -1,18 +1,15 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
 interface CodeBlockProps {
-  code: string;
-  language?: string;
+  code: string
+  language?: string
 }
 
-export default function CodeBlock({
-  code,
-  language = "javascript",
-}: CodeBlockProps) {
+export default function CodeBlock({ code, language = "javascript" }: CodeBlockProps) {
   // O código agora é exibido completo imediatamente
-
+  
   return (
     <div className="bg-black/50 border border-cyan-500/30 rounded-lg overflow-hidden">
       <div className="bg-gradient-to-r from-cyan-900/50 to-blue-900/50 px-4 py-3 border-b border-cyan-500/20 flex items-center justify-between">
@@ -29,5 +26,5 @@ export default function CodeBlock({
         </code>
       </pre>
     </div>
-  );
+  )
 }

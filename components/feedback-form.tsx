@@ -1,23 +1,23 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Star } from 'lucide-react'
 
 export default function FeedbackForm() {
-  const [rating, setRating] = useState(0);
-  const [hoveredRating, setHoveredRating] = useState(0);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [rating, setRating] = useState(0)
+  const [hoveredRating, setHoveredRating] = useState(0)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [feedback, setFeedback] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+    e.preventDefault()
+    setLoading(true)
+    setError("")
 
     try {
       const response = await fetch("/api/feedback", {
@@ -32,25 +32,25 @@ export default function FeedbackForm() {
           feedback,
           timestamp: new Date().toISOString(),
         }),
-      });
+      })
 
       if (!response.ok) {
-        throw new Error("Erro ao enviar feedback");
+        throw new Error("Erro ao enviar feedback")
       }
 
-      setSubmitted(true);
-      setName("");
-      setEmail("");
-      setFeedback("");
-      setRating(0);
+      setSubmitted(true)
+      setName("")
+      setEmail("")
+      setFeedback("")
+      setRating(0)
 
-      setTimeout(() => setSubmitted(false), 5000);
+      setTimeout(() => setSubmitted(false), 5000)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Erro desconhecido");
+      setError(err instanceof Error ? err.message : "Erro desconhecido")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <motion.div
@@ -135,16 +135,12 @@ export default function FeedbackForm() {
               </motion.button>
             ))}
           </div>
-          {rating > 0 && (
-            <p className="text-xs text-gray-400 mt-2">{rating} de 5 estrelas</p>
-          )}
+          {rating > 0 && <p className="text-xs text-gray-400 mt-2">{rating} de 5 estrelas</p>}
         </div>
 
         {/* Feedback */}
         <div>
-          <label className="block text-sm text-gray-300 mb-2">
-            Seu Feedback
-          </label>
+          <label className="block text-sm text-gray-300 mb-2">Seu Feedback</label>
           <textarea
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
@@ -167,5 +163,5 @@ export default function FeedbackForm() {
         </motion.button>
       </form>
     </motion.div>
-  );
+  )
 }

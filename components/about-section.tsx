@@ -67,7 +67,7 @@ export default function AboutSection() {
             <div className="mb-6">
               <div className="w-full max-w-2xl h-48 md:h-56 rounded-xl overflow-hidden border border-white/20 mx-auto">
                 <Image
-                  src={encodeURI("/images/foto integrantes.png")}
+                  src="/../public/images/Foto Integrantes.png"
                   alt="Foto dos integrantes"
                   width={960}
                   height={640}

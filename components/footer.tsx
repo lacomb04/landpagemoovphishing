@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import FeedbackForm from "@/components/FeedbackForm";
+import FeedbackForm from "@/components/feedback-form";
 
 export default function Footer() {
   return (

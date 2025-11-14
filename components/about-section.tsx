@@ -65,18 +65,16 @@ export default function AboutSection() {
             className="mb-8 rounded-2xl border border-indigo-500/40 bg-indigo-900/20 p-6"
           >
             <div className="mb-6">
-              <div className="w-full max-w-2xl h-48 md:h-56 rounded-xl overflow-hidden border border-white/20 mx-auto">
+              <div className="w-full max-w-3xl h-56 md:h-72 rounded-xl overflow-hidden border border-white/20 mx-auto">
                 <Image
                   src={encodeURI("/images/Foto integrantes.png")}
                   alt="Foto dos integrantes"
-                  width={960}
-                  height={640}
-                  className="h-full w-full object-cover object-center"
+                  width={1440}
+                  height={960}
+                  className="h-full w-full object-cover object-left"
                 />
               </div>
-              <p className="text-white text-lg font-semibold text-center mt-3">
-                Equipe: {teamMembers.join(" • ")}
-              </p>
+              <p className="text-white text-lg font-semibold text-center mt-3">Equipe</p>
             </div>
 
             <div className="flex flex-wrap gap-3">

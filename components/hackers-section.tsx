@@ -71,9 +71,7 @@ export default function HackersSection() {
               <h3 className="text-xl font-bold text-white mb-3">
                 {attack.title}
               </h3>
-              <p className="text-xl font-bold text-white mb-3">
-                {attack.description}
-              </p>
+              <p className="text-xl text-white mb-3">{attack.description}</p>
             </motion.div>
           ))}
         </div>

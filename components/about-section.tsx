@@ -64,16 +64,24 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="mb-8 rounded-2xl border border-indigo-500/40 bg-indigo-900/20 p-6"
           >
-            <div className="flex items-center gap-3 mb-4">
-              <UsersRound className="h-6 w-6 text-indigo-300" />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-24 w-24 rounded-full overflow-hidden border border-white/20">
+                <Image
+                  src={encodeURI("/images/foto integrantes.png")}
+                  alt="Foto dos integrantes"
+                  width={96}
+                  height={96}
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <p className="text-white text-lg font-semibold">
-                Foto do trio (em breve)
+                Equipe: {teamMembers.join(" • ")}
               </p>
             </div>
             <p className="text-sm md:text-base text-gray-300 mb-4">
-              Em breve vamos adicionar aqui a foto oficial dos três integrantes
-              que constroem esta experiência:
+              Foto oficial dos três integrantes.
             </p>
+            
             <div className="flex flex-wrap gap-3">
               {teamMembers.map((member) => (
                 <span

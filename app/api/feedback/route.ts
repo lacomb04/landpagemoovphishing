@@ -1,4 +1,4 @@
-import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -6,41 +6,28 @@ export async function POST(request: NextRequest) {
   try {
     const cookieStore = await cookies();
 
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          getAll() {
-            return cookieStore.getAll();
-          },
-          setAll(cookiesToSet) {
-            try {
-              cookiesToSet.forEach(({ name, value, options }) =>
-                cookieStore.set(name, value, options)
-              );
-            } catch {
-              // Handle error
-            }
-          },
-        },
-      }
-    );
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      return NextResponse.json(
+        { error: "Configuração Supabase não encontrada" },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const body = await request.json();
 
-    const { data, error } = await supabase
-      .from("feedback")
-      .insert([
-        {
-          name: body.name,
-          email: body.email,
-          rating: body.rating,
-          feedback: body.feedback,
-          created_at: body.timestamp,
-        },
-      ])
-      .select();
+    const { data, error } = await supabase.from("feedback").insert([
+      {
+        name: body.name,
+        email: body.email,
+        rating: body.rating,
+        feedback: body.feedback,
+      },
+    ]);
 
     if (error) {
       console.error("[v0] Erro Supabase:", error);

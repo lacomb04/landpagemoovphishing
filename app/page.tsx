@@ -7,6 +7,7 @@ import PhishingSection from "@/components/phishing-section"
 import QRCodeSection from "@/components/qr-code-section"
 import SocialEngineeringSection from "@/components/social-engineering-section"
 import HackersSection from "@/components/hackers-section"
+import AboutSection from "@/components/about-section"
 import Footer from "@/components/footer"
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
       <QRCodeSection />
       <SocialEngineeringSection />
       <HackersSection />
+      <AboutSection />
       <Footer />
     </main>
   )

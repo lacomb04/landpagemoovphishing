@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import FeedbackForm from "@/components/FeedbackForm";
 
 export default function Footer() {
   return (
@@ -27,6 +28,7 @@ export default function Footer() {
               informações sobre proteção digital.
             </p>
           </div>
+
           <div>
             <FeedbackForm />
           </div>
